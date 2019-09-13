@@ -14,14 +14,14 @@ if (/(android)/i.test(navigator.userAgent)) {  // for android & amazon-fireos
 document.addEventListener('deviceready', function() {
   admob.banner.config({
     id: admobid.banner,
-    isTesting: false,
+    isTesting: true,
     autoShow: true,
   })
   admob.banner.prepare()
 
   admob.interstitial.config({
     id: admobid.interstitial,
-    isTesting: false,
+    isTesting: true,
     autoShow: false,
   })
   admob.interstitial.prepare()
