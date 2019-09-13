@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "846537380465",
+    "firebase_url": "https://girias-de-crente.firebaseio.com",
+    "project_id": "girias-de-crente",
+    "storage_bucket": "girias-de-crente.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:846537380465:android:99b158c7232a77c0a4c1d0",
+        "android_client_info": {
+          "package_name": "com.innovatesoft.giriasdecrente"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "846537380465-skiuh556ak40vmo5c54mc7v6mktg3p1s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR720uIqxrbJkwtPV_Jxc5FmardUzBvYY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "846537380465-skiuh556ak40vmo5c54mc7v6mktg3p1s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

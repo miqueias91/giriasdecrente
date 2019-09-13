@@ -1,0 +1,22 @@
+{
+  "name": "com.innovatesoft.giriasdecrente",
+  "version": "1.0.0",
+  "displayName": "Gírias de crente",
+  "cordova": {
+    "platforms": [
+      "android"
+    ],
+    "plugins": {
+      "cordova-plugin-admob-free": {
+        "ADMOB_APP_ID": "ca-app-pub-7091486462236476~6425058967"
+      },
+      "onesignal-cordova-plugin": {}
+    }
+  },
+  "dependencies": {
+    "cordova-admob-sdk": "0.24.1",
+    "cordova-android": "~7.1.4",
+    "cordova-promise-polyfill": "0.0.2",
+    "onesignal-cordova-plugin": "2.6.0"
+  }
+}
