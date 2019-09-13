@@ -10,7 +10,7 @@
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="16" />
-    <!--<gap:plugin name="onesignal-cordova-plugin" source="npm" spec="^2.4.1" />-->
+    <gap:plugin name="onesignal-cordova-plugin" source="npm" spec="2.6.0" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
     <plugin name="cordova-plugin-media-capture" source="npm" spec="~1.2.0" />
@@ -65,5 +65,5 @@
         <variable name="ADMOB_APP_ID" value="ca-app-pub-7091486462236476~6425058967" />
     </plugin>
     <engine name="android" spec="~7.1.4" />
-    <plugin name="onesignal-cordova-plugin" spec="2.6.0" />
+    <!--<plugin name="onesignal-cordova-plugin" spec="2.6.0" />-->
 </widget>
