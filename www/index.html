@@ -297,6 +297,7 @@
         <script>
           ons.getScriptPage().onInit = function () {
             var dados = this.data.title.split('||'); 
+            admob.interstitial.show();
 
             //CHAMA DA FUNÇÃO PARA ABRIR MODAL 
             fn.showDialog('modal-aguarde');
