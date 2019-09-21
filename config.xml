@@ -8,9 +8,17 @@
         Miqueias M Caetano
     </author>
     <content src="index.html" />
+    <preference name="windows-appx-target" value="8.1-phone" />
+    <preference name="WindowsToastCapable" value="true" />
+    <preference name="Orientation" value="portrait" />
     <preference name="DisallowOverscroll" value="true" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#4682B4" />
+    <preference name="StatusBarStyle" value="blacktranslucent" />
+    <preference name="phonegap-version" value="cli-8.0.0" />
+    <preference name="android-build-tool" value="gradle" />
     <preference name="android-minSdkVersion" value="16" />
-    <preference name="AndroidPersistentFileLocation" value="Compatibility" />
+
     <gap:plugin name="onesignal-cordova-plugin" source="npm" spec="^2.4.1" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-camera" source="npm" spec="~2.1.1" />
