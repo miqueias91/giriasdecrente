@@ -10,6 +10,7 @@ if (/(android)/i.test(navigator.userAgent)) {  // for android & amazon-fireos
     interstitial: 'ca-app-pub-7091486462236476/3962547158',
   }
 }
+  alert("aqui")
 
 document.addEventListener('deviceready', function() {
   admob.banner.config({
@@ -31,7 +32,7 @@ document.addEventListener('deviceready', function() {
     admob.interstitial.show()
   }
 
-  alert("ok")
+  alert("deviceready")
 
 }, false)
 
