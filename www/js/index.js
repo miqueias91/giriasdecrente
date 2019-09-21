@@ -13,6 +13,7 @@ if (/(android)/i.test(navigator.userAgent)) {  // for android & amazon-fireos
   alert("aqui")
 
 document.addEventListener('deviceready', function() {
+  alert("deviceready")
   admob.banner.config({
     id: admobid.banner,
     isTesting: true,
@@ -32,7 +33,6 @@ document.addEventListener('deviceready', function() {
     admob.interstitial.show()
   }
 
-  alert("deviceready")
 
 }, false)
 
