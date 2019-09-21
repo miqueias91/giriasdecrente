@@ -14,15 +14,15 @@ if (/(android)/i.test(navigator.userAgent)) {  // for android & amazon-fireos
 document.addEventListener('deviceready', function() {
   admob.banner.config({
     id: admobid.banner,
-    isTesting: false,
+    isTesting: true,
     autoShow: true,
   })
   admob.banner.prepare()
 
   admob.interstitial.config({
     id: admobid.interstitial,
-    isTesting: false,
-    autoShow: false,
+    isTesting: true,
+    autoShow: true,
   })
   admob.interstitial.prepare()
 
@@ -30,6 +30,8 @@ document.addEventListener('deviceready', function() {
   document.getElementById('showAd').onclick = function() {
     admob.interstitial.show()
   }
+
+  alert("ok")
 
 }, false)
 

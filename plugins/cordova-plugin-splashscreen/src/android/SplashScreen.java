@@ -53,7 +53,7 @@ public class SplashScreen extends CordovaPlugin {
     // Enable functionality only if running on 4.x.x.
     private static final boolean HAS_BUILT_IN_SPLASH_SCREEN = Integer.valueOf(CordovaWebView.CORDOVA_VERSION.split("\\.")[0]) < 4;
     private static final int DEFAULT_SPLASHSCREEN_DURATION = 3000;
-    private static final int DEFAULT_FADE_DURATION = 100;
+    private static final int DEFAULT_FADE_DURATION = 500;
     private static Dialog splashDialog;
     private static ProgressDialog spinnerDialog;
     private static boolean firstShow = true;
@@ -127,7 +127,7 @@ public class SplashScreen extends CordovaPlugin {
 
     private int getFadeDuration () {
         int fadeSplashScreenDuration = preferences.getBoolean("FadeSplashScreen", true) ?
-                preferences.getInteger("FadeSplashScreenDuration", DEFAULT_FADE_DURATION) : 0;
+            preferences.getInteger("FadeSplashScreenDuration", DEFAULT_FADE_DURATION) : 0;
 
         if (fadeSplashScreenDuration < 30) {
             // [CB-9750] This value used to be in decimal seconds, so we will assume that if someone specifies 10
@@ -301,7 +301,7 @@ public class SplashScreen extends CordovaPlugin {
                 splashImageView.setMinimumWidth(display.getWidth());
 
                 // TODO: Use the background color of the webView's parent instead of using the preference.
-                splashImageView.setBackgroundColor(preferences.getInteger("backgroundColor", Color.YELLOW));
+                splashImageView.setBackgroundColor(preferences.getInteger("backgroundColor", Color.BLACK));
 
                 if (isMaintainAspectRatio()) {
                     // CENTER_CROP scale mode is equivalent to CSS "background-size:cover"
@@ -369,20 +369,20 @@ public class SplashScreen extends CordovaPlugin {
                 progressBar.setLayoutParams(layoutParams);
 
                 if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-                    String colorName = preferences.getString("SplashScreenSpinnerColor", "#000000");
+                    String colorName = preferences.getString("SplashScreenSpinnerColor", '#000000');
                     if(colorName != null){
                         int[][] states = new int[][] {
-                                new int[] { android.R.attr.state_enabled}, // enabled
-                                new int[] {-android.R.attr.state_enabled}, // disabled
-                                new int[] {-android.R.attr.state_checked}, // unchecked
-                                new int[] { android.R.attr.state_pressed}  // pressed
+                            new int[] { android.R.attr.state_enabled}, // enabled
+                            new int[] {-android.R.attr.state_enabled}, // disabled
+                            new int[] {-android.R.attr.state_checked}, // unchecked
+                            new int[] { android.R.attr.state_pressed}  // pressed
                         };
                         int progressBarColor = Color.parseColor(colorName);
                         int[] colors = new int[] {
-                                progressBarColor,
-                                progressBarColor,
-                                progressBarColor,
-                                progressBarColor
+                            progressBarColor,
+                            progressBarColor,
+                            progressBarColor,
+                            progressBarColor
                         };
                         ColorStateList colorStateList = new ColorStateList(states, colors);
                         progressBar.setIndeterminateTintList(colorStateList);
