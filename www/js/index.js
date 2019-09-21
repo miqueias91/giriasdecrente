@@ -35,10 +35,13 @@ document.addEventListener('deviceready', function() {
 
 document.addEventListener('admob.banner.events.LOAD_FAIL', function(event) {
   console.log(event)
+  alert(event)
 })
 
 document.addEventListener('admob.interstitial.events.LOAD_FAIL', function(event) {
   console.log(event)
+    alert(event)
+
 })
 
 document.addEventListener('admob.interstitial.events.LOAD', function(event) {
@@ -48,6 +51,7 @@ document.addEventListener('admob.interstitial.events.LOAD', function(event) {
 
 document.addEventListener('admob.interstitial.events.CLOSE', function(event) {
   console.log(event)
+  alert(event)
 
   admob.interstitial.prepare()
 })
