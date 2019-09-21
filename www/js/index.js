@@ -14,14 +14,14 @@ if (/(android)/i.test(navigator.userAgent)) {  // for android & amazon-fireos
 document.addEventListener('deviceready', function() {
   admob.banner.config({
     id: admobid.banner,
-    isTesting: true,
+    isTesting: false,
     autoShow: true,
   })
   admob.banner.prepare()
 
   admob.interstitial.config({
     id: admobid.interstitial,
-    isTesting: true,
+    isTesting: false,
     autoShow: false,
   })
   admob.interstitial.prepare()
@@ -35,13 +35,10 @@ document.addEventListener('deviceready', function() {
 
 document.addEventListener('admob.banner.events.LOAD_FAIL', function(event) {
   console.log(event)
-  alert(event)
 })
 
 document.addEventListener('admob.interstitial.events.LOAD_FAIL', function(event) {
   console.log(event)
-    alert(event)
-
 })
 
 document.addEventListener('admob.interstitial.events.LOAD', function(event) {
@@ -51,7 +48,6 @@ document.addEventListener('admob.interstitial.events.LOAD', function(event) {
 
 document.addEventListener('admob.interstitial.events.CLOSE', function(event) {
   console.log(event)
-  alert(event)
 
   admob.interstitial.prepare()
 })
