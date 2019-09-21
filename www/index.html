@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css" />
     <link rel="stylesheet" href="css/index.css" />
 
-    <title>Gírias de crente</title>
+    <title>Dicionário de crente</title>
 </head>
 
 <body>
@@ -25,7 +25,7 @@
     <template id="tabbar.html">
       <ons-page id="tabbar-page" class="">
         <ons-toolbar>
-          <div class="center"><center>Gírias de Crente</center></div>
+          <div class="center"><center>Dicionário de Crente</center></div>
         </ons-toolbar>
         <ons-tabbar swipeable id="appTabbar" position="auto">
           <ons-tab label="Home" icon="ion-home" page="home.html" active></ons-tab>
@@ -36,7 +36,7 @@
         <script>
           ons.getScriptPage().addEventListener('prechange', function(event) { 
             if (event.target.matches('#appTabbar')) {
-              event.currentTarget.querySelector('ons-toolbar .center center').innerHTML = 'Gírias de Crente';
+              event.currentTarget.querySelector('ons-toolbar .center center').innerHTML = 'Dicionário de Crente';
             }
           });
         </script>

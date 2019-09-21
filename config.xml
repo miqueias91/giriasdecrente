@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.innovatesoft.giriasdecrente" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
-    <name>Gírias de Crente</name>
+    <name>Dicionário de Crente</name>
     <description>
-        Conheça as gírias e expressões mais usadas pelos crentes.
+        Conheça as expressões mais usadas pelos evangelicos.
     </description>
     <author email="miqueiasmcaetano@gmail.com" href="https://miqueiasmcaetano.000webhostapp.com">
         Miqueias M Caetano
