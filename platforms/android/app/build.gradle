@@ -281,10 +281,10 @@ dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-    implementation "com.google.android.gms:play-services-base:15.0.1"
-    implementation "com.google.android.gms:play-services-ads:15.0.1"
-    implementation 'com.google.firebase:firebase-analytics:15.0.0'
-    implementation "com.onesignal:OneSignal:3.11.3"
+    compile "com.google.android.gms:play-services-base:11.0.4"
+    compile "com.google.android.gms:play-services-ads:11.0.4"
+    compile "com.onesignal:OneSignal:3.11.3"
+    compile "com.android.support:support-v4:24.1.1+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

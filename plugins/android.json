@@ -7,58 +7,13 @@
     "files": {}
   },
   "installed_plugins": {
-    "cordova-plugin-battery-status": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-camera": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-media-capture": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-console": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-contacts": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-device": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-device-motion": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-device-orientation": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
     "cordova-plugin-dialogs": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-file-transfer": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-geolocation": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-globalization": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-inappbrowser": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-media": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-network-information": {
       "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
     },
     "cordova-plugin-splashscreen": {
       "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
     },
     "cordova-plugin-statusbar": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
-    "cordova-plugin-vibration": {
       "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
     },
     "cordova-plugin-whitelist": {
@@ -71,17 +26,27 @@
     },
     "onesignal-cordova-plugin": {
       "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
+    },
+    "cordova-clipboard": {
+      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
+    },
+    "cordova-plugin-x-socialsharing": {
+      "ANDROID_SUPPORT_V4_VERSION": "24.1.1+",
+      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
+    },
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
     }
   },
   "dependent_plugins": {
-    "cordova-plugin-file": {
-      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
-    },
     "cordova-promise-polyfill": {
       "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
     },
     "cordova-admob-sdk": {
       "PLAY_SERVICES_VERSION": "11.0.4",
+      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
+    },
+    "es6-promise-plugin": {
       "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
     }
   }
