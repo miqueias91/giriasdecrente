@@ -336,6 +336,7 @@
         <div id='ultimas_girias'></div>
         <script>
           ons.getScriptPage().onInit = function () {
+            admob.interstitial.show();
             app.ultimasGiriasCadastradas();
           }
         </script>
@@ -375,7 +376,7 @@
       <script>
         ons.getScriptPage().onInit = function () {
           this.querySelector('ons-toolbar div.center').textContent = this.data.title;
-
+          admob.interstitial.show();
           $( "#cadastrar_giria" ).click(function() {
             if ($( "#giria_input" ).val() === '') {
               ons.notification.alert("Informe o nome da expressão.",{title: 'Ops!'});
@@ -499,6 +500,7 @@
           }
         },
         buscaGiriaEstado: function(letra) {
+          admob.interstitial.show();
           $.ajax({
               url: "https://miqueiasmcaetano.000webhostapp.com/webservice/giriasdecrente/buscaGiria.php",
               dataType: 'json',
@@ -532,6 +534,7 @@
           }); 
         },
         pesquisaGiriaEstado: function(pesquisa) {
+          admob.interstitial.show();
           $.ajax({
               url: "https://miqueiasmcaetano.000webhostapp.com/webservice/giriasdecrente/buscaGiria.php",
               dataType: 'json',
@@ -567,6 +570,7 @@
           }); 
         },
         ultimasGiriasCadastradas: function() {
+          admob.interstitial.show();
           $.ajax({
               url: "https://miqueiasmcaetano.000webhostapp.com/webservice/giriasdecrente/ultimasGiriasCadastradas.php",
               dataType: 'json',
@@ -600,6 +604,7 @@
           }); 
         },
         cadastraGiria: function(giria_input, significado_giria, letra){
+          admob.interstitial.show();
           var userId = localStorage.getItem('userId');
           var pushToken = localStorage.getItem('pushToken');
           $.ajax({
