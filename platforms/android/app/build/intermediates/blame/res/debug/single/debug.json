@@ -4,12 +4,12 @@
         "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\02bf86fea9fd00e1234e0cdc70bbf190\\res\\layout\\notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
-        "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\c238784ec5b042956ea60a89d56919b2\\res\\drawable-xhdpi-v4\\googleg_disabled_color_18.png"
-    },
-    {
         "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\xml_sharing_paths.xml.flat",
         "source": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\src\\main\\res\\xml\\sharing_paths.xml"
+    },
+    {
+        "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xhdpi-v4_googleg_disabled_color_18.png.flat",
+        "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\c238784ec5b042956ea60a89d56919b2\\res\\drawable-xhdpi-v4\\googleg_disabled_color_18.png"
     },
     {
         "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_notification_bg_normal_pressed.9.png.flat",
@@ -44,12 +44,12 @@
         "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\6e380f12c127faf9aff056cbb709627f\\res\\drawable-hdpi-v4\\ic_os_notification_fallback_white_24dp.png"
     },
     {
-        "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
-        "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\10b3e9e912bb5d238ccd56732ab92fb5\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
-    },
-    {
         "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi-v4_googleg_standard_color_18.png.flat",
         "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\c238784ec5b042956ea60a89d56919b2\\res\\drawable-xxhdpi-v4\\googleg_standard_color_18.png"
+    },
+    {
+        "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_notify_panel_notification_icon_bg.png.flat",
+        "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\10b3e9e912bb5d238ccd56732ab92fb5\\res\\drawable-hdpi-v4\\notify_panel_notification_icon_bg.png"
     },
     {
         "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_common_google_signin_btn_icon_light_normal_background.9.png.flat",
@@ -152,12 +152,12 @@
         "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\6e380f12c127faf9aff056cbb709627f\\res\\drawable-xhdpi-v4\\ic_os_notification_fallback_white_24dp.png"
     },
     {
-        "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_notification_action_tombstone.xml.flat",
-        "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\10b3e9e912bb5d238ccd56732ab92fb5\\res\\layout-v21\\notification_action_tombstone.xml"
-    },
-    {
         "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_googleg_standard_color_18.png.flat",
         "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\c238784ec5b042956ea60a89d56919b2\\res\\drawable-hdpi-v4\\googleg_standard_color_18.png"
+    },
+    {
+        "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout-v21_notification_action_tombstone.xml.flat",
+        "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\10b3e9e912bb5d238ccd56732ab92fb5\\res\\layout-v21\\notification_action_tombstone.xml"
     },
     {
         "merged": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_notification_template_icon_group.xml.flat",

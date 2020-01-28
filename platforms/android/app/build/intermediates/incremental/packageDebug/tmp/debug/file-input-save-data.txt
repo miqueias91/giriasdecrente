@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Tue Jan 28 02:23:42 BRST 2020
+#Tue Jan 28 04:42:56 BRST 2020
 2.path=www/plugins/cordova-plugin-device-orientation/www/CompassHeading.js
 14.set=ASSET
 107.baseType=DIRECTORY
