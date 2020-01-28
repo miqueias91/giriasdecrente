@@ -173,10 +173,10 @@ document.getElementById(id).style.display = 'none';
 <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
   <header class="mdl-layout__header">
     <div class="mdl-layout__header-row">
-      <span class="mdl-layout-title">Lint Report: 12 errors</span>
+      <span class="mdl-layout-title">Lint Report: 13 errors</span>
       <div class="mdl-layout-spacer"></div>
       <nav class="mdl-navigation mdl-layout--large-screen-only">
-Check performed at Thu Sep 12 23:21:19 BRT 2019      </nav>
+Check performed at Tue Jan 28 02:32:01 BRST 2020      </nav>
     </div>
   </header>
   <div class="mdl-layout__drawer">
@@ -184,6 +184,7 @@ Check performed at Thu Sep 12 23:21:19 BRT 2019      </nav>
     <nav class="mdl-navigation">
       <a class="mdl-navigation__link" href="#overview"><i class="material-icons">dashboard</i>Overview</a>
       <a class="mdl-navigation__link" href="#MissingDefaultResource"><i class="material-icons error-icon">error</i>Missing Default (12)</a>
+      <a class="mdl-navigation__link" href="#UniquePermission"><i class="material-icons error-icon">error</i>Permission names are not unique (1)</a>
     </nav>
   </div>
   <main class="mdl-layout__content">
@@ -201,6 +202,9 @@ Check performed at Thu Sep 12 23:21:19 BRT 2019      </nav>
 <tr>
 <td class="countColumn">12</td><td class="issueColumn"><i class="material-icons error-icon">error</i>
 <a href="#MissingDefaultResource">MissingDefaultResource</a>: Missing Default</td></tr>
+<tr>
+<td class="countColumn">1</td><td class="issueColumn"><i class="material-icons error-icon">error</i>
+<a href="#UniquePermission">UniquePermission</a>: Permission names are not unique</td></tr>
 <tr><td></td><td class="categoryColumn"><a href="#MissingIssues">Disabled Checks (312)</a>
 </td></tr></table>
 <br/>              </div>
@@ -264,6 +268,61 @@ There may be scenarios where you have a resource, such as a <code>-fr</code> dra
               <div class="mdl-card__actions mdl-card--border">
 <button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationMissingDefaultResourceLink" onclick="reveal('explanationMissingDefaultResource');">
 Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="MissingDefaultResourceCardLink" onclick="hideid('MissingDefaultResourceCard');">
+Dismiss</button>            </div>
+            </div>
+          </section><a name="UniquePermission"></a>
+<section class="section--center mdl-grid mdl-grid--no-spacing mdl-shadow--2dp" id="UniquePermissionCard" style="display: block;">
+            <div class="mdl-card mdl-cell mdl-cell--12-col">
+  <div class="mdl-card__title">
+    <h2 class="mdl-card__title-text">Permission names are not unique</h2>
+  </div>
+              <div class="mdl-card__supporting-text">
+<div class="issue">
+<div class="warningslist">
+<span class="location"><a href="../../src/main/AndroidManifest.xml">../../src/main/AndroidManifest.xml</a>:38</span>: <span class="message">Permission name <code>RECEIVE_ADM_MESSAGE</code> is not unique (appears in both <code>com.phonegap.giriasestadosbrasileiros.permission.RECEIVE_ADM_MESSAGE</code> and <code>com.innovatesoft.giriasdecrente.permission.RECEIVE_ADM_MESSAGE</code>)</span><br /><pre class="errorlines">
+<span class="lineno"> 35 </span>    <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.INTERNET"</span> />
+<span class="lineno"> 36 </span>    <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.ACCESS_NETWORK_STATE"</span> />
+<span class="lineno"> 37 </span>    <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.WRITE_EXTERNAL_STORAGE"</span> />
+<span class="caretline"><span class="lineno"> 38 </span>    <span class="tag">&lt;permission</span><span class="attribute"> </span><span class="error"><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"com.innovatesoft.giriasdecrente.permission.RECEIVE_ADM_MESSAGE"</span></span> <span class="prefix">android:</span><span class="attribute">protectionLevel</span>=<span class="value">"signature"</span> /></span>
+<span class="lineno"> 39 </span>    <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"com.innovatesoft.giriasdecrente.permission.RECEIVE_ADM_MESSAGE"</span> />
+<span class="lineno"> 40 </span><span class="tag">&lt;/manifest></span>
+</pre>
+
+<ul><span class="location"><a href="../../src/main/AndroidManifest.xml">../../src/main/AndroidManifest.xml</a>:33</span>: <span class="message">Previous permission here</span><br /><pre class="errorlines">
+<span class="lineno"> 30 </span>      <span class="tag">&lt;/provider></span>
+<span class="lineno"> 31 </span>  <span class="tag">&lt;/application></span>
+<span class="lineno"> 32 </span>  <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"com.amazon.device.messaging.permission.RECEIVE"</span> />
+<span class="caretline"><span class="lineno"> 33 </span>  </span><span class="error"><span class="tag">&lt;permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"com.phonegap.giriasestadosbrasileiros.permission.RECEIVE_ADM_MESSAGE"</span> <span class="prefix">android:</span><span class="attribute">protectionLevel</span>=<span class="value">"signature"</span> /></span>
+<span class="lineno"> 34 </span>  <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"com.phonegap.giriasestadosbrasileiros.permission.RECEIVE_ADM_MESSAGE"</span> />
+<span class="lineno"> 35 </span>  <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.INTERNET"</span> />
+<span class="lineno"> 36 </span>  <span class="tag">&lt;uses-permission</span><span class="attribute"> </span><span class="prefix">android:</span><span class="attribute">name</span>=<span class="value">"android.permission.ACCESS_NETWORK_STATE"</span> />
+</pre>
+</ul></div>
+<div class="metadata"><div class="explanation" id="explanationUniquePermission" style="display: none;">
+The unqualified names or your permissions must be unique. The reason for this is that at build time, the <code>aapt</code> tool will generate a class named <code>Manifest</code> which contains a field for each of your permissions. These fields are named using your permission unqualified names (i.e. the name portion after the last dot).<br/>
+<br/>
+If more than one permission maps to the same field name, that field will arbitrarily name just one of them.<br/>To suppress this error, use the issue id "UniquePermission" as explained in the <a href="#SuppressInfo">Suppressing Warnings and Errors</a> section.<br/>
+<br/></div>
+</div>
+</div>
+<div class="chips">
+<span class="mdl-chip">
+    <span class="mdl-chip__text">UniquePermission</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Correctness</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Fatal</span>
+</span>
+<span class="mdl-chip">
+    <span class="mdl-chip__text">Priority 6/10</span>
+</span>
+</div>
+              </div>
+              <div class="mdl-card__actions mdl-card--border">
+<button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="explanationUniquePermissionLink" onclick="reveal('explanationUniquePermission');">
+Explain</button><button class="mdl-button mdl-js-button mdl-js-ripple-effect" id="UniquePermissionCardLink" onclick="hideid('UniquePermissionCard');">
 Dismiss</button>            </div>
             </div>
           </section>

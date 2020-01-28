@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Miqueias\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
+            "outputFile": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v24\\values-v24.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\1df80bcb3338f430a179e5b59351a07e\\res\\values-v24\\values-v24.xml",
+                    "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\02bf86fea9fd00e1234e0cdc70bbf190\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",

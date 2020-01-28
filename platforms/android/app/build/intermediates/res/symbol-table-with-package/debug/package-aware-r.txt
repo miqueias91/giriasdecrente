@@ -9,6 +9,7 @@ attr cardElevation
 attr cardMaxElevation
 attr cardPreventCornerOverlap
 attr cardUseCompatPadding
+attr cardViewStyle
 attr circleCrop
 attr colorScheme
 attr contentPadding
@@ -16,6 +17,7 @@ attr contentPaddingBottom
 attr contentPaddingLeft
 attr contentPaddingRight
 attr contentPaddingTop
+attr coordinatorLayoutStyle
 attr font
 attr fontProviderAuthority
 attr fontProviderCerts
@@ -27,8 +29,20 @@ attr fontStyle
 attr fontWeight
 attr imageAspectRatio
 attr imageAspectRatioAdjust
+attr keylines
+attr layout_anchor
+attr layout_anchorGravity
+attr layout_behavior
+attr layout_dodgeInsetEdges
+attr layout_insetEdge
+attr layout_keyline
 attr scopeUris
+attr statusBarBackground
 bool abc_action_bar_embed_tabs
+color browser_actions_bg_grey
+color browser_actions_divider_color
+color browser_actions_text_color
+color browser_actions_title_color
 color cardview_dark_background
 color cardview_light_background
 color cardview_shadow_end_color
@@ -51,6 +65,8 @@ color primary_text_default_material_dark
 color ripple_material_light
 color secondary_text_default_material_dark
 color secondary_text_default_material_light
+dimen browser_actions_context_menu_max_width
+dimen browser_actions_context_menu_min_padding
 dimen cardview_compat_inset_shadow
 dimen cardview_default_elevation
 dimen cardview_default_radius
@@ -95,9 +111,6 @@ drawable common_google_signin_btn_text_light_normal
 drawable common_google_signin_btn_text_light_normal_background
 drawable googleg_disabled_color_18
 drawable googleg_standard_color_18
-drawable ic_action_next_item
-drawable ic_action_previous_item
-drawable ic_action_remove
 drawable ic_os_notification_fallback_white_24dp
 drawable notification_action_background
 drawable notification_bg
@@ -120,19 +133,36 @@ id action_text
 id actions
 id adjust_height
 id adjust_width
+id all
 id async
 id auto
 id blocking
+id bottom
+id browser_actions_header_text
+id browser_actions_menu_item_icon
+id browser_actions_menu_item_text
+id browser_actions_menu_items
+id browser_actions_menu_view
 id cancel_action
+id center
+id center_horizontal
+id center_vertical
 id chronometer
+id clip_horizontal
+id clip_vertical
 id dark
+id end
 id end_padder
+id fill
+id fill_horizontal
+id fill_vertical
 id forever
 id icon
 id icon_group
 id icon_only
 id info
 id italic
+id left
 id light
 id line1
 id line3
@@ -147,18 +177,24 @@ id os_bgimage_notif_bgimage_align_layout
 id os_bgimage_notif_bgimage_right_aligned
 id os_bgimage_notif_body
 id os_bgimage_notif_title
+id right
 id right_icon
 id right_side
 id standard
+id start
 id status_bar_latest_event_content
+id tag_transition_group
 id text
 id text2
 id time
 id title
+id top
 id wide
 integer cancel_button_image_alpha
 integer google_play_services_version
 integer status_bar_notification_info_maxnum
+layout browser_actions_context_menu_page
+layout browser_actions_context_menu_row
 layout notification_action
 layout notification_action_tombstone
 layout notification_media_action
@@ -185,7 +221,6 @@ string common_google_play_services_enable_title
 string common_google_play_services_install_button
 string common_google_play_services_install_text
 string common_google_play_services_install_title
-string common_google_play_services_notification_channel_name
 string common_google_play_services_notification_ticker
 string common_google_play_services_unknown_issue
 string common_google_play_services_unsupported_text
@@ -213,7 +248,6 @@ string s3
 string s4
 string s5
 string s6
-string s7
 string status_bar_notification_info_overflow
 style Base_CardView
 style CardView
@@ -232,10 +266,14 @@ style TextAppearance_Compat_Notification_Title_Media
 style Theme_IAPTheme
 style Widget_Compat_NotificationActionContainer
 style Widget_Compat_NotificationActionText
+style Widget_Support_CoordinatorLayout
 styleable AdsAttrs adSize adSizes adUnitId
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
+styleable CoordinatorLayout keylines statusBarBackground
+styleable CoordinatorLayout_Layout android_layout_gravity layout_anchor layout_anchorGravity layout_behavior layout_dodgeInsetEdges layout_insetEdge layout_keyline
 styleable FontFamily fontProviderAuthority fontProviderCerts fontProviderFetchStrategy fontProviderFetchTimeout fontProviderPackage fontProviderQuery
-styleable FontFamilyFont font fontStyle fontWeight
+styleable FontFamilyFont android_font android_fontWeight android_fontStyle font fontStyle fontWeight
 styleable LoadingImageView circleCrop imageAspectRatio imageAspectRatioAdjust
 styleable SignInButton buttonSize colorScheme scopeUris
 xml config
+xml sharing_paths

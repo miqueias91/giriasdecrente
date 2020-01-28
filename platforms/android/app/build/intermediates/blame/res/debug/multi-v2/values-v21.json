@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\Miqueias\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
+            "outputFile": "C:\\xampp\\htdocs\\giriasdecrente\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-v21\\values-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\98615b233e7626d65365d6b0c78e2f65\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\10b3e9e912bb5d238ccd56732ab92fb5\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,13",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\1df80bcb3338f430a179e5b59351a07e\\res\\values-v21\\values-v21.xml",
+                    "source": "C:\\Users\\Miqueias\\.gradle\\caches\\transforms-2\\files-2.1\\02bf86fea9fd00e1234e0cdc70bbf190\\res\\values-v21\\values-v21.xml",
                     "from": {
                         "startLines": "2,5,8,11",
                         "startColumns": "4,4,4,4",
