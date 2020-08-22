@@ -36,6 +36,9 @@
     },
     "cordova-plugin-file": {
       "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
+    },
+    "cordova-plugin-firebase": {
+      "PACKAGE_NAME": "com.innovatesoft.giriasdecrente"
     }
   },
   "dependent_plugins": {

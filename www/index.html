@@ -9,8 +9,6 @@
     <link rel="stylesheet" href="lib/onsen/css/onsenui.css" />
     <link rel="stylesheet" href="lib/onsen/css/onsen-css-components.css" />
     <link rel="stylesheet" href="css/index.css" />
-
-    <script src="js/index.js"></script>
     <title>Dicionário de Crente</title>
 </head>
 
@@ -26,11 +24,13 @@
     <template id="tabbar.html">
       <ons-page id="tabbar-page" class="">
         <ons-toolbar>
-          <div class="center"><center>Dicionário de Crente</center></div>
+          <div class="center">
+            <ons-search-input style="width: 100%;top: 3px" placeholder="Digite uma expressão..." onchange="app.onSearchKeyDown(this.value);"></ons-search-input>
+          </div>
         </ons-toolbar>
         <ons-tabbar swipeable id="appTabbar" position="auto">
           <ons-tab label="Home" icon="ion-home" page="home.html" active></ons-tab>
-          <ons-tab label="Buscar Palavra" icon="ion-search" page="buscar.html"></ons-tab>
+          <!--<ons-tab label="Buscar Palavra" icon="ion-search" page="buscar.html"></ons-tab>-->
           <ons-tab label="Últimos Registros" icon="fa-newspaper" page="ultimas.html"></ons-tab>
         </ons-tabbar>
 
@@ -318,7 +318,7 @@
         <script>
           ons.getScriptPage().onInit = function () {
             var dados = this.data.title.split('||'); 
-            admob.interstitial.show();
+            //admob.interstitial.show();
 
             //CHAMA DA FUNÇÃO PARA ABRIR MODAL 
             fn.showDialog('modal-aguarde');
@@ -409,12 +409,36 @@
 
     <template id="buscar.html">
       <ons-page id="forms-page">
-        <ons-search-input 
-          style="width: 100%"
-          placeholder="Digite uma expressão..."
-          onchange="app.onSearchKeyDown(this.value);"
-        ></ons-search-input>
-          <div id='resultado_girias'></div>
+        <ons-toolbar id="resultado_girias_">
+            <div class="left">
+                <ons-back-button>Resultado da pesquisa</ons-back-button>
+            </div>
+            <div class="center"></div>
+        </ons-toolbar>
+          <div id='resultado_girias'>
+            <ons-card><div class='title'>Ops!</div><div class='content'>Não encontramos nada parecido com essa expressão</div></ons-card>
+          </div>
+          <script>
+            ons.getScriptPage().onInit = function () {
+              this.querySelector('#resultado_girias_ div.center').textContent = 'Resultado da pesquisa';
+              var jsonObj = window.localStorage.getItem('resultado_girias');
+              var obj = JSON.parse(jsonObj);
+              var html_pesquisa = "<ons-card><div class='title'>Ops!</div><div class='content'>Não encontramos nada parecido com essa expressão</div></ons-card>";
+
+              if (obj != '') {
+                $('#resultado_girias ons-card').remove();
+                html_pesquisa = '';
+                for(var i in obj) {
+                  html_pesquisa += 
+                    "<ons-card>"+
+                      "<div class='title'><b>"+obj[i]['giria']+"</b></div>"+
+                      "<div class='content'>"+obj[i]['significado']+"</div>"+
+                    "</ons-card>";
+                }
+              }
+              $('#resultado_girias').html(html_pesquisa);
+            }
+        </script>
       </ons-page>
     </template>
 
@@ -423,8 +447,8 @@
         <div id='ultimas_girias'></div>
         <script>
           ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
-            app.ultimasGiriasCadastradas();
+            //admob.interstitial.show();
+            //app.ultimasGiriasCadastradas();
           }
         </script>
       </ons-page>
@@ -451,7 +475,13 @@
 
           <ons-list-item class="input-items" style="width: 100%">
             <label class="center">
-              <textarea id="significado_giria" class="textarea" rows="3" placeholder="Significado da expressão" style="width: 100%"></textarea>
+              <textarea id="significado_giria" class="textarea" rows="3" placeholder="Definição da expressão" style="width: 100%"></textarea>
+          </label>
+          </ons-list-item>
+
+          <ons-list-item class="input-items" style="width: 100%">
+            <label class="center">
+              <textarea id="exemplo_giria" class="textarea" rows="3" placeholder="Exemplo da expressão" style="width: 100%"></textarea>
           </label>
           </ons-list-item>
 
@@ -463,7 +493,7 @@
       <script>
         ons.getScriptPage().onInit = function () {
           this.querySelector('ons-toolbar div.center').textContent = this.data.title;
-          admob.interstitial.show();
+          //admob.interstitial.show();
           $( "#cadastrar_giria" ).click(function() {
             if ($( "#giria_input" ).val() === '') {
               ons.notification.alert("Informe o nome da expressão.",{title: 'Ops!'});
@@ -494,8 +524,14 @@
     <!-- JS dependencies (order matters!) -->
     <script type="text/javascript" src="cordova.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
+    <script src="js/admob.js"></script>
     <script src="lib/onsen/js/onsenui.js"></script>
     <script src="lib/SocialSharing/SocialSharing.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/index.js"></script>
     <script>
       document.addEventListener('deviceready', function () {
         var userId = localStorage.getItem('userId');
@@ -557,232 +593,6 @@
       window.fn.hideDialog = function (id) {
         document.getElementById(id).hide();
       };
-
-      var app = {
-        // Application Constructor
-        initialize: function() {
-          document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-        },
-        // deviceready Event Handler    
-        // Bind any cordova events here. Common events are:
-        // 'pause', 'resume', etc.
-        onDeviceReady: function() {          
-          this.receivedEvent('deviceready');  
-        },
-        // Update DOM on a Received Event
-        receivedEvent: function(id) {
-          initAd();  
-          showBannerFunc();
-          showInterstitialFunc();
-        },
-        //FUNÇÃO DE BUSCA
-        onSearchKeyDown: function(id) {
-          if (id === '') {
-            return false;
-          }
-          else{
-            $('#resultado_girias').html("");
-            fn.showDialog('modal-aguarde');
-            app.pesquisaGiriaEstado(id);
-          }
-        },
-        buscaGiriaEstado: function(letra) {
-          admob.interstitial.show();
-          $.ajax({
-              url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/buscaGiria.php",
-              dataType: 'json',
-              type: 'GET',
-              timeout: parseInt(timeout),
-              data: {
-                'letra': letra
-              },
-              error: function(a) {
-                var timeoutID = 0;
-                clearTimeout(timeoutID);
-                timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
-                ons.notification.alert("Não foi possível buscar as expressões no momento.",{title: 'Ops!'});
-              },
-              success: function(valorRetornado) {
-                console.log(valorRetornado)
-                var timeoutID = 0;
-                clearTimeout(timeoutID);
-                timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
-                if (valorRetornado == "ERROR") {
-                  ons.notification.alert("Não foi possível buscar as expressões.",{title: 'Ops!'});
-                }
-                else{  
-                  var obj = valorRetornado;
-                  if (obj) {
-                    for(var i in obj) {
-                      $('#conteudo_girias').append("<ons-card class='txt_giria' id='txt_giria"+i+"' marcado='0'><div class='title'>"+obj[i]['giria']+"\n</div><div class='content'>"+obj[i]['significado']+"</div></ons-card>");
-                    }
-
-                    var qtd_marcado = 0;
-                    $( ".txt_giria" ).click(function() {
-                      var marcado = $(this).attr('marcado');
-                      var id = $(this).attr('id');          
-
-                      if(parseInt(marcado) == 0) {
-                        $(this).css("background","#f5f5f5");
-                        $(this).attr('marcado',1);
-                        qtd_marcado++;
-                      }
-                      else{
-                        $(this).css("background","#fff");
-                        $(this).attr('marcado',0);
-                        qtd_marcado--;
-                      }
-
-                      if (parseInt(qtd_marcado) > 0) {
-                        $(".copiar").css("display","");
-                        $(".compartilha").css("display","");
-                      }
-                      else{
-                        $(".copiar").css("display","none");
-                        $(".compartilha").css("display","none");
-                      }                    
-                    });
-                  }
-                }
-              },
-          }); 
-        },
-        pesquisaGiriaEstado: function(pesquisa) {
-          admob.interstitial.show();
-          $.ajax({
-              url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/buscaGiria.php",
-              dataType: 'json',
-              type: 'GET',
-              timeout: parseInt(timeout),
-              data: {
-                'pesquisa': pesquisa
-              },
-              error: function(a) {
-                var timeoutID = 0;
-                clearTimeout(timeoutID);
-                timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
-                $('#resultado_girias').append("<ons-card><div class='title'>Ops!</div><div class='content'>Não encontramos nada parecido com essa expressão</div></ons-card>");
-              },
-              success: function(valorRetornado) { 
-                var obj = valorRetornado;
-                var timeoutID = 0;
-                clearTimeout(timeoutID);
-                timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
-                if (obj) {
-                  for(var i in obj) {
-                    $('#resultado_girias').append(
-                      "<ons-card>"+
-                        "<div class='title'>"+obj[i]['giria']+"</div>"+
-                        "<div class='content'>"+obj[i]['significado']+"</div>"+
-                      "</ons-card>");
-                  }
-                }
-                else{
-                  $('#resultado_girias').append("<ons-card><div class='title'>Ops!</div><div class='content'>Não encontramos nada parecido com essa expressão</div></ons-card>");
-                }
-              },
-          }); 
-        },
-        ultimasGiriasCadastradas: function() {
-          admob.interstitial.show();
-          $.ajax({
-              url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/ultimasGiriasCadastradas.php",
-              dataType: 'json',
-              type: 'GET',
-              timeout: parseInt(timeout),
-              data: {
-                'ultimasGiriasCadastradas': 'sim'
-              },
-              error: function(a) {    
-                console.log(a)      
-                $('#ultimas_girias').append("<ons-card><div class='title'>Ops!</div><div class='content'>Nenhuma expressão cadastrada nos últimos dias.</div></ons-card>");
-              },
-              success: function(valorRetornado) { 
-                var obj = valorRetornado;
-                var timeoutID = 0;
-                clearTimeout(timeoutID);
-                timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
-                if (obj) {
-                  for(var i in obj) {
-                    $('#ultimas_girias').append(
-                      "<ons-card>"+
-                        "<div class='title'>"+obj[i]['giria']+"</div>"+
-                        "<div class='content'>"+obj[i]['significado']+"</div>"+
-                      "</ons-card>");
-                  }
-                }
-                else{
-                  $('#ultimas_girias').append("<ons-card><div class='title'>Ops!</div><div class='content'>Nenhuma expressão cadastrada nos últimos dias.</div></ons-card>");
-                }
-              },
-          }); 
-        },
-        cadastraGiria: function(giria_input, significado_giria, letra){
-          admob.interstitial.show();
-          var userId = localStorage.getItem('userId');
-          var pushToken = localStorage.getItem('pushToken');
-          $.ajax({
-              url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraGiria.php",
-              dataType: 'html',
-              type: 'POST',
-              timeout: parseInt(timeout),
-              data: {
-                'giria': giria_input,
-                'significado': significado_giria,
-                'letra': letra,
-                'userId': userId,
-                'pushToken': pushToken,
-              },
-              error: function(a) {
-                console.log(a)
-                var timeoutID = 0;
-                clearTimeout(timeoutID);
-                timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
-                ons.notification.alert("Não foi possível enviar sua expressão.",{title: 'Ops!'});
-              },
-              success: function(valorRetornado) {
-                var timeoutID = 0;
-                clearTimeout(timeoutID);
-                timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
-                ons.notification.alert("Sua expressão foi cadastrada com sucesso. Ela estará disponível na letra '"+letra+"'.",{title: 'Parabéns!'});
-              },
-          }); 
-        },
-        getIds: function() {
-          window.plugins.OneSignal.getIds(function(ids) {
-            window.localStorage.setItem('userId', ids.userId);
-            window.localStorage.setItem('pushToken', ids.pushToken);
-
-            $("#OneSignalUserId").val(ids.userId);
-            $("#OneSignalPushToken").val(ids.pushToken);
-
-            var userId = localStorage.getItem('userId');
-            var pushToken = localStorage.getItem('pushToken');
-            app.cadastraUser();
-          });       
-        },
-        cadastraUser: function() {
-          var userId = $("#OneSignalUserId").val();
-          var pushToken = $("#OneSignalPushToken").val();
-
-          $.ajax({
-            url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
-            dataType: 'html',
-            type: 'POST',
-            data: {
-              'userId': userId,
-              'pushToken': pushToken,
-            },
-            error: function(a) {
-              alert(a);
-            },
-            success: function(valorRetornado) {
-              //alert(valorRetornado);
-            },
-          });
-        }
-      };
-      app.initialize();
     </script>    
 </body>
 
