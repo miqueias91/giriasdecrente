@@ -53,8 +53,8 @@
 
     <template id="home.html">
       <ons-page id="pagina_inicio" class="">
-        <input type="hidden" id="OneSignalUserId" value="">
-        <input type="hidden" id="OneSignalPushToken" value="">
+        <input type="text" id="OneSignalUserId" value="">
+        <input type="text" id="OneSignalPushToken" value="">
 
         <ons-list id="lista_estados">
 
@@ -531,69 +531,8 @@
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
     <script src="js/firebase.js"></script>
-    <script src="js/index.js"></script>
-    <script>
-      document.addEventListener('deviceready', function () {
-        var userId = localStorage.getItem('userId');
-        var pushToken = localStorage.getItem('pushToken');
-        if(userId && pushToken){
-        }
-        else{          
-          app.getIds();
-        }
-
-        window.plugins.OneSignal
-          .startInit('c5518440-c407-4d1d-8105-6bcc6c4a41c8')
-          .handleNotificationOpened(function(jsonData) {
-            var mensagem = JSON.parse(JSON.stringify(jsonData['notification']['payload']['body']));
-
-            ons.notification.alert(
-              mensagem,
-              {title: 'Ola!'}
-            );
-          })
-          .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
-          .endInit();
-      }, false);
-    </script>
-    <script>
-
-      var timeout = 50000;
-
-      window.fn = {};
-
-      window.fn.toggleMenu = function () {
-        document.getElementById('appSplitter').right.toggle();
-      };
-
-      window.fn.loadView = function (index) {
-        document.getElementById('appTabbar').setActiveTab(index);
-        document.getElementById('sidemenu').close();
-      };
-
-      window.fn.loadLink = function (url) {
-        window.open(url, '_blank');
-      };
-
-      window.fn.pushPage = function (page, anim) {
-        if (anim) {
-          document.getElementById('appNavigator').pushPage(page.id, { data: { title: page.title }, animation: anim });
-        } else {
-          document.getElementById('appNavigator').pushPage(page.id, { data: { title: page.title } });
-        }
-      };
-
-      // SCRIPT PARA CRIAR O MODAL DE AGUARDE
-      window.fn.showDialog = function (id) {
-        var elem = document.getElementById(id);      
-        elem.show();            
-      };
-
-      //SCRIPT PARA ESCONDER O MODAL DE AGUARDE
-      window.fn.hideDialog = function (id) {
-        document.getElementById(id).hide();
-      };
-    </script>    
+    <script src="js/onesignal.js"></script>
+    <script src="js/index.js"></script> 
 </body>
 
 </html>
