@@ -27,7 +27,7 @@
           }
         },
         buscaGiriaEstado: function(letra) {
-          //admob.interstitial.show();
+          admob.interstitial.show();
           $.ajax({
               url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/buscaGiria.php",
               dataType: 'json',
@@ -102,7 +102,7 @@
         },
         pesquisaGiriaEstado: function(pesquisa) {
           localStorage.setItem("resultado_girias", '[]');
-          //admob.interstitial.show();
+          admob.interstitial.show();
           $.ajax({
               url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/buscaGiria.php",
               dataType: 'json',
@@ -131,7 +131,7 @@
           }); 
         },
         ultimasGiriasCadastradas: function() {
-          //admob.interstitial.show();
+          admob.interstitial.show();
           $.ajax({
               url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/ultimasGiriasCadastradas.php",
               dataType: 'json',
@@ -165,10 +165,10 @@
           }); 
         },
         cadastraGiria: function(giria_input, significado_giria, letra){
-          //admob.interstitial.show();
+          admob.interstitial.show();
           var userId = localStorage.getItem('userId');
           var pushToken = localStorage.getItem('pushToken');
-          /*$.ajax({
+          $.ajax({
               url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraGiria.php",
               dataType: 'html',
               type: 'POST',
@@ -193,7 +193,7 @@
                 timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
                 ons.notification.alert("Sua expressão foi cadastrada com sucesso. Ela estará disponível na letra '"+letra+"'.",{title: 'Parabéns!'});
               },
-          });*/ 
+          });
           var timeoutID = 0;
           clearTimeout(timeoutID);
           timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
@@ -219,11 +219,10 @@
           firebase.database().ref('giriasdecrente_users').child(userId).set({
             userId: userId,
             pushToken: pushToken,
-            alertado: 'nao',
             datacadastro: this.dateTime()
           });
 
-          /*$.ajax({
+          $.ajax({
             url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
             dataType: 'html',
             type: 'POST',
@@ -237,7 +236,7 @@
             success: function(valorRetornado) {
               //alert(valorRetornado);
             },
-          });*/
+          });
         },
         dateTime: function() {
           let now = new Date;
