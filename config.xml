@@ -55,10 +55,8 @@
     <platform name="android">
         <allow-intent href="market:*" />
     </platform>
-    <engine name="android" spec="~7.1.4" />
     <plugin name="cordova-plugin-admob-free" spec="~0.27.0">
         <variable name="ADMOB_APP_ID" value="ca-app-pub-7091486462236476~6425058967" />
     </plugin>
     <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
-    <plugin name="cordova-plugin-firebase" spec="^2.0.5" />
 </widget>
