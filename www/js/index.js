@@ -237,7 +237,6 @@
     },
     getIds: function() {
       window.plugins.OneSignal.getIds(function(ids) {
-        alert(id)
         window.localStorage.setItem('userId', ids.userId);
         window.localStorage.setItem('pushToken', ids.pushToken);
 
@@ -297,4 +296,3 @@
   else{          
     app.getIds();
   }
-  app.getIds();

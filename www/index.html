@@ -53,8 +53,8 @@
 
     <template id="home.html">
       <ons-page id="pagina_inicio" class="">
-        <input type="text" id="OneSignalUserId" value="">
-        <input type="text" id="OneSignalPushToken" value="">
+        <input type="hidden" id="OneSignalUserId" value="">
+        <input type="hidden" id="OneSignalPushToken" value="">
 
         <ons-list id="lista_estados">
 
@@ -317,7 +317,7 @@
         <script>
           ons.getScriptPage().onInit = function () {
             var dados = this.data.title.split('||'); 
-            //admob.interstitial.show();
+            admob.interstitial.show();
 
             //CHAMA DA FUNÇÃO PARA ABRIR MODAL 
             fn.showDialog('modal-aguarde');
@@ -446,8 +446,8 @@
         <div id='ultimas_girias'></div>
         <script>
           ons.getScriptPage().onInit = function () {
-            //admob.interstitial.show();
-            //app.ultimasGiriasCadastradas();
+            admob.interstitial.show();
+            app.ultimasGiriasCadastradas();
           }
         </script>
       </ons-page>
@@ -492,7 +492,7 @@
       <script>
         ons.getScriptPage().onInit = function () {
           this.querySelector('ons-toolbar div.center').textContent = this.data.title;
-          //admob.interstitial.show();
+          admob.interstitial.show();
           $( "#cadastrar_giria" ).click(function() {
             if ($( "#giria_input" ).val() === '') {
               ons.notification.alert("Informe o nome da expressão.",{title: 'Ops!'});
