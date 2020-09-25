@@ -25,6 +25,9 @@
     <feature name="SocialSharing">
         <param name="android-package" value="nl.xservices.plugins.SocialSharing" />
     </feature>
+    <feature name="OneSignalPush">
+        <param name="android-package" value="com.plugin.gcm.OneSignalPush" />
+    </feature>
     <name>Dicionário de Crente</name>
     <description>
         Conheça as expressões mais usadas pelos evangélicos.
@@ -33,7 +36,6 @@
         Miqueias M Caetano
     </author>
     <content src="index.html" />
-    <gap:plugin name="onesignal-cordova-plugin" source="npm" spec="^2.4.1" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -41,7 +43,7 @@
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
+    <gap:plugin name="onesignal-cordova-plugin" source="npm" spec="^2.4.1" />
     <icon density="ldpi" src="www/res/icon/android/drawable-ldpi-icon.png" />
     <icon density="mdpi" src="www/res/icon/android/drawable-mdpi-icon.png" />
     <icon density="hdpi" src="www/res/icon/android/drawable-hdpi-icon.png" />
@@ -73,7 +75,4 @@
     <preference name="android-build-tool" value="gradle" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="android-targetSdkVersion" value="29" />
-    <feature name="OneSignalPush">
-        <param name="android-package" value="com.plugin.gcm.OneSignalPush" />
-    </feature>
 </widget>
