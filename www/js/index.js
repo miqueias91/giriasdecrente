@@ -63,7 +63,7 @@
       }
     },
     buscaGiriaEstado: function(letra) {
-      admob.interstitial.show();
+      //admob.interstitial.show();
       $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/buscaGiria.php",
           dataType: 'json',
@@ -138,7 +138,7 @@
     },
     pesquisaGiriaEstado: function(pesquisa) {
       localStorage.setItem("resultado_girias", '[]');
-      admob.interstitial.show();
+      //admob.interstitial.show();
       $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/buscaGiria.php",
           dataType: 'json',
@@ -167,7 +167,7 @@
       }); 
     },
     ultimasGiriasCadastradas: function() {
-      admob.interstitial.show();
+      //admob.interstitial.show();
       $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/ultimasGiriasCadastradas.php",
           dataType: 'json',
@@ -200,8 +200,8 @@
           },
       }); 
     },
-    cadastraGiria: function(giria_input, significado_giria, letra){
-      admob.interstitial.show();
+    cadastraGiria: function(giria_input, significado_giria, letra, exemplo){
+      //admob.interstitial.show();
       var userId = localStorage.getItem('userId');
       var pushToken = localStorage.getItem('pushToken');
       $.ajax({
@@ -212,6 +212,7 @@
           data: {
             'giria': giria_input,
             'significado': significado_giria,
+            'exemplo': exemplo,
             'letra': letra,
             'userId': userId,
             'pushToken': pushToken,
@@ -242,15 +243,13 @@
 
         $("#OneSignalUserId").val(ids.userId);
         $("#OneSignalPushToken").val(ids.pushToken);
-
-        var userId = localStorage.getItem('userId');
-        var pushToken = localStorage.getItem('pushToken');
         this.cadastraUser();
       });       
     },
     cadastraUser: function() {
       var userId = $("#OneSignalUserId").val();
       var pushToken = $("#OneSignalPushToken").val();
+      alert('userId: '+ userId+'\n'+'pushToken: '+pushToken)
       
       $.ajax({
         url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
@@ -264,7 +263,7 @@
           alert(a);
         },
         success: function(valorRetornado) {
-          //alert(valorRetornado);
+          alert(valorRetornado);
         },
       });
     },
@@ -284,9 +283,6 @@
   app.initialize();
 
   var userId = localStorage.getItem('userId');
-  var pushToken = localStorage.getItem('pushToken');
-  if(userId && pushToken){
-  }
-  else{          
+  if(!userId){
     app.getIds();
   }

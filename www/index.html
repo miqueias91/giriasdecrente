@@ -317,7 +317,7 @@
         <script>
           ons.getScriptPage().onInit = function () {
             var dados = this.data.title.split('||'); 
-            admob.interstitial.show();
+            //admob.interstitial.show();
 
             //CHAMA DA FUNÇÃO PARA ABRIR MODAL 
             fn.showDialog('modal-aguarde');
@@ -446,7 +446,7 @@
         <div id='ultimas_girias'></div>
         <script>
           ons.getScriptPage().onInit = function () {
-            admob.interstitial.show();
+            //admob.interstitial.show();
             app.ultimasGiriasCadastradas();
           }
         </script>
@@ -492,7 +492,7 @@
       <script>
         ons.getScriptPage().onInit = function () {
           this.querySelector('ons-toolbar div.center').textContent = this.data.title;
-          admob.interstitial.show();
+          //admob.interstitial.show();
           $( "#cadastrar_giria" ).click(function() {
             if ($( "#giria_input" ).val() === '') {
               ons.notification.alert("Informe o nome da expressão.",{title: 'Ops!'});
@@ -507,9 +507,10 @@
               fn.showDialog('modal-aguarde');
 
               var letra = $('#giria_input').val().trim().toUpperCase().substring(0,1);
-              app.cadastraGiria($( "#giria_input" ).val(), $( "#significado_giria" ).val(), letra);
+              app.cadastraGiria($( "#giria_input" ).val(), $( "#significado_giria" ).val(), letra, $( "#exemplo_giria" ).val());
               $( "#giria_input" ).val("");
               $( "#significado_giria" ).val("");
+              $( "#exemplo_giria" ).val("");
             }
           });
         }
