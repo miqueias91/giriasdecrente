@@ -249,15 +249,9 @@
       });       
     },
     cadastraUser: function() {
-      let userId = $("#OneSignalUserId").val();
-      let pushToken = $("#OneSignalPushToken").val();
+      var userId = $("#OneSignalUserId").val();
+      var pushToken = $("#OneSignalPushToken").val();
       
-      firebase.database().ref('giriasdecrente_users').child(userId).set({
-        userId: userId,
-        pushToken: pushToken,
-        datacadastro: this.dateTime()
-      });
-
       $.ajax({
         url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
         dataType: 'html',
