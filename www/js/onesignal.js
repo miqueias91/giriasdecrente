@@ -1,4 +1,5 @@
 document.addEventListener('deviceready', function () {
+  alert('OneSignal')
   window.plugins.OneSignal
     .startInit('d1797b39-26de-46b8-86ec-9539f8aabf2d')
     .handleNotificationOpened(function(jsonData) {
