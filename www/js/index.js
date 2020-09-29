@@ -60,25 +60,17 @@
     // Update DOM on a Received Event
     receivedEvent: function(id) {
       this.oneSignal();
-      this.adMob();
       this.getIds();
+      this.adMob();
     },
     bannerLoadFail: function(event) {
-      alert('bannerLoadFail()')
-      alert(event)
     },
     interstitialLoadFail: function(event) {
-      alert('interstitialLoadFail()')
-      alert(event)
     },
     interstitialLoad: function(event) {
-      alert('interstitialLoad()')
-      alert(event)
       document.getElementById('showAd').disabled = false;
     },
     interstitialClose: function(event) {
-      alert('interstitialClose()')
-      alert(event)
       admob.interstitial.prepare();
     },
     adMob: function() {
@@ -102,8 +94,6 @@
       }
     },
     oneSignal: function() {
-            alert('oneSignal()')
-
       window.plugins.OneSignal
         .startInit('d1797b39-26de-46b8-86ec-9539f8aabf2d')
         .handleNotificationOpened(function(jsonData) {
