@@ -159,7 +159,6 @@
             var timeoutID = 0;
             var obj = JSON.stringify(valorRetornado);
             timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
-
             if (obj) {
               localStorage.setItem("resultado_girias", obj);
             }
