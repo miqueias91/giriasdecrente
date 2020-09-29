@@ -237,6 +237,7 @@
     },
     getIds: function() {
       window.plugins.OneSignal.getIds(function(ids) {
+        alert('userId: '+ids.userId+'\npushToken: '+ids.pushToken)
         window.localStorage.setItem('userId', ids.userId);
         window.localStorage.setItem('pushToken', ids.pushToken);
 
@@ -280,8 +281,4 @@
     }
   };
   app.initialize();
-
-  var userId = localStorage.getItem('userId');
-  if(!userId){
-    app.getIds();
-  }
+  app.getIds();

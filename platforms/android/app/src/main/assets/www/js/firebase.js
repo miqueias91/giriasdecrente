@@ -18,3 +18,11 @@
     var errorMessage = error.message;
     console.log(errorMessage)
   });
+
+  firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+      var isAnonymous = user.isAnonymous;
+      var uid = user.uid;
+      alert('uid: '+uid)
+    }
+  });   

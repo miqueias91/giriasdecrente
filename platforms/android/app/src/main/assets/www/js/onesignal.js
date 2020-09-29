@@ -1,6 +1,6 @@
 document.addEventListener('deviceready', function () {
   window.plugins.OneSignal
-    .startInit('c5518440-c407-4d1d-8105-6bcc6c4a41c8')
+    .startInit('d1797b39-26de-46b8-86ec-9539f8aabf2d')
     .handleNotificationOpened(function(jsonData) {
       var mensagem = JSON.parse(JSON.stringify(jsonData['notification']['payload']['body']));
 

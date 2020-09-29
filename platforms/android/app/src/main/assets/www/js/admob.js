@@ -4,12 +4,7 @@ if (/(android)/i.test(navigator.userAgent)) {  // for android & amazon-fireos
     banner: 'ca-app-pub-7091486462236476/9500431400',
     interstitial: 'ca-app-pub-7091486462236476/3962547158',
   }
-} else if (/(ipod|iphone|ipad)/i.test(navigator.userAgent)) {  // for ios
-  admobid = {
-    banner: 'ca-app-pub-7091486462236476/9500431400',
-    interstitial: 'ca-app-pub-7091486462236476/3962547158',
-  }
-}
+} 
 
 document.addEventListener('deviceready', function() {
   admob.banner.config({
