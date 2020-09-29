@@ -304,8 +304,14 @@
       }
     },
     cadastraUser: function() {
+      window.plugins.OneSignal.getIds(function(ids) {
+        window.localStorage.setItem('userId', ids.userId);
+        window.localStorage.setItem('pushToken', ids.pushToken);
+      }); 
+
       var userId = window.localStorage.getItem('userId');
       var pushToken = window.localStorage.getItem('pushToken');
+      
       alert('cadastraUser()')
       alert(userId)
       if (userId) {
