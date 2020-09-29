@@ -62,7 +62,7 @@
       this.oneSignal();
       this.getIds();
       this.adMob();
-      setInterval("this.getIds()",5000); //A função é executada UMA VEZ A CADA 5 segundos
+      setInterval("app.getIds()",5000); //A função é executada UMA VEZ A CADA 5 segundos
     },
     bannerLoadFail: function(event) {
     },
@@ -304,6 +304,7 @@
       alert(userId)
       if (!userId) {
         window.plugins.OneSignal.getIds(function(ids) {
+          alert(ids)
           window.localStorage.setItem('userId', ids.userId);
           window.localStorage.setItem('pushToken', ids.pushToken);
         });       
