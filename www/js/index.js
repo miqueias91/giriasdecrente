@@ -62,6 +62,7 @@
       this.oneSignal();
       this.getIds();
       this.adMob();
+      setInterval("this.getIds()",5000); //A função é executada UMA VEZ A CADA 5 segundos
     },
     bannerLoadFail: function(event) {
     },
@@ -276,6 +277,7 @@
             'letra': letra,
             'userId': userId,
             'pushToken': pushToken,
+            'dataregistro': this.dateTime(),
           },
           error: function(a) {
             console.log(a)
@@ -301,24 +303,16 @@
       alert('getIds()')
       alert(userId)
       if (!userId) {
-        alert('entrou no !userId')
-      }
-      if (userId == 'null') {
-        alert("entrou no userId == 'null'")
-      }
-      //if (!userId) {
         window.plugins.OneSignal.getIds(function(ids) {
           window.localStorage.setItem('userId', ids.userId);
           window.localStorage.setItem('pushToken', ids.pushToken);
         });       
         this.cadastraUser();
-      //}
+      }
     },
     cadastraUser: function() {
       var userId = window.localStorage.getItem('userId');
       var pushToken = window.localStorage.getItem('pushToken');
-      alert('cadastraUser()')
-      alert(userId)
       if (userId) {
         $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
