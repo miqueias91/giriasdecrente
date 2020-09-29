@@ -325,7 +325,12 @@
             window.localStorage.setItem('userCadastrado', true);
             ons.notification.alert({
               message: 'Conheça as expressões usados pelos evangélicos.\nE caso vc conheça alguma expressão, compartilhe conosco.',
-              title: 'Configuração concluida!'
+              title: 'Configuração concluida!',
+              callback: function (index) {
+                if (0 == index) {
+                  this.adMob();
+                }
+              }
             });          
           },
         });
