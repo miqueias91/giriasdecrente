@@ -236,6 +236,7 @@
       ons.notification.alert("Sua expressão foi cadastrada com sucesso. Ela estará disponível na letra '"+letra+"'.",{title: 'Parabéns!'});
     },
     getIds: function() {
+      alert('getIds()')
       window.plugins.OneSignal.getIds(function(ids) {
         alert('userId: '+ids.userId+'\npushToken: '+ids.pushToken)
         window.localStorage.setItem('userId', ids.userId);
