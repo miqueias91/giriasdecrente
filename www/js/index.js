@@ -262,6 +262,8 @@
       });       
     },
     cadastraUser: function() {
+      alert('cadastraUser()')
+
       var userId = $("#OneSignalUserId").val();
       var pushToken = $("#OneSignalPushToken").val();
       alert('userId: '+ userId+'\n'+'pushToken: '+pushToken)
