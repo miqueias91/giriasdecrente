@@ -7,7 +7,7 @@ if (/(android)/i.test(navigator.userAgent)) {  // for android & amazon-fireos
 } 
 
 document.addEventListener('deviceready', function() {
-  alert('OneSignal')
+  alert('OneSignal ADMOB')
   window.plugins.OneSignal
     .startInit('d1797b39-26de-46b8-86ec-9539f8aabf2d')
     .handleNotificationOpened(function(jsonData) {
