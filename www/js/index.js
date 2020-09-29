@@ -291,11 +291,9 @@
       timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
       ons.notification.alert("Sua expressão foi cadastrada com sucesso. Ela estará disponível na letra '"+letra+"'.",{title: 'Parabéns!'});
     },
-    getIds: function() {  
-      var userId = window.localStorage.getItem('userId');
-      alert('getIds()')
-      alert(userId)
-      if (!userId) {
+    getIds: function() {
+      var userCadastrado = window.localStorage.getItem('userCadastrado');
+      if (!userCadastrado) {
         window.plugins.OneSignal.getIds(function(ids) {
           window.localStorage.setItem('userId', ids.userId);
           window.localStorage.setItem('pushToken', ids.pushToken);
@@ -304,14 +302,9 @@
       }
     },
     cadastraUser: function() {
-      window.plugins.OneSignal.getIds(function(ids) {
-        window.localStorage.setItem('userId', ids.userId);
-        window.localStorage.setItem('pushToken', ids.pushToken);
-      }); 
-
       var userId = window.localStorage.getItem('userId');
       var pushToken = window.localStorage.getItem('pushToken');
-      
+
       alert('cadastraUser()')
       alert(userId)
       if (userId) {
@@ -328,6 +321,7 @@
             //alert(a);
           },
           success: function(valorRetornado) {
+            window.localStorage.setItem('userCadastrado', true);
             //alert(valorRetornado);
           },
         });
