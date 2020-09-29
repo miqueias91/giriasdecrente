@@ -90,7 +90,7 @@
 
       document.getElementById('showAd').disabled = true;
       document.getElementById('showAd').onclick = function() {
-        admob.interstitial.show()
+        admob.interstitial.show();
       };
 
       document.addEventListener('admob.banner.events.LOAD_FAIL', this.bannerLoadFail.bind(this));
@@ -300,6 +300,12 @@
       var userId = window.localStorage.getItem('userId');
       alert('getIds()')
       alert(userId)
+      if (!userId) {
+        alert('entrou no !userId')
+      }
+      if (userId == 'null') {
+        alert("entrou no userId == 'null'")
+      }
       //if (!userId) {
         window.plugins.OneSignal.getIds(function(ids) {
           window.localStorage.setItem('userId', ids.userId);
