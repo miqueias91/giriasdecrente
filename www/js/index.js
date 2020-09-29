@@ -326,6 +326,17 @@
           },
         });
       }
+      else{
+        ons.notification.alert({
+          message: 'Obrigado por baixar nosso dicionário, abra o aplicativo novamente para podermos concluir as configurações.',
+          title: 'Mensagem',
+          callback: function (index) {
+            if (0 == index) {
+              navigator.app.exitApp();
+            }
+          }
+        });
+      }
     },
     dateTime: function() {
       let now = new Date;
