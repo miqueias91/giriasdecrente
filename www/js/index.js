@@ -252,10 +252,8 @@
     getIds: function() {
       alert('getIds()')
       window.plugins.OneSignal.getIds(function(ids) {
-        alert('userId: '+ids.userId+'\npushToken: '+ids.pushToken)
         window.localStorage.setItem('userId', ids.userId);
         window.localStorage.setItem('pushToken', ids.pushToken);
-
         $("#OneSignalUserId").val(ids.userId);
         $("#OneSignalPushToken").val(ids.pushToken);
         this.cadastraUser();
