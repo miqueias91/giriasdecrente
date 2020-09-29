@@ -1,5 +1,4 @@
   var timeout = 50000;
-
   var admobid = {}
   if (/(android)/i.test(navigator.userAgent)) {  // for android & amazon-fireos
     admobid = {
@@ -46,10 +45,10 @@
     // Application Constructor
     initialize: function() {
       document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-      // document.addEventListener('admob.banner.events.LOAD_FAIL', this.bannerLoadFail.bind(this));
-      // document.addEventListener('admob.interstitial.events.LOAD_FAIL', this.interstitialLoadFail.bind(this));
-      // document.addEventListener('admob.interstitial.events.LOAD', this.interstitialLoad.bind(this));
-      // document.addEventListener('admob.interstitial.events.CLOSE', this.interstitialClose.bind(this));
+      document.addEventListener('admob.banner.events.LOAD_FAIL', this.bannerLoadFail.bind(this));
+      document.addEventListener('admob.interstitial.events.LOAD_FAIL', this.interstitialLoadFail.bind(this));
+      document.addEventListener('admob.interstitial.events.LOAD', this.interstitialLoad.bind(this));
+      document.addEventListener('admob.interstitial.events.CLOSE', this.interstitialClose.bind(this));
     },
     // deviceready Event Handler    
     // Bind any cordova events here. Common events are:
@@ -62,7 +61,6 @@
       this.oneSignal();
       this.getIds();
       this.adMob();
-      setInterval("app.getIds()",5000); //A função é executada UMA VEZ A CADA 5 segundos
     },
     bannerLoadFail: function(event) {
     },
@@ -93,11 +91,6 @@
       document.getElementById('showAd').onclick = function() {
         admob.interstitial.show();
       };
-
-      document.addEventListener('admob.banner.events.LOAD_FAIL', this.bannerLoadFail.bind(this));
-      document.addEventListener('admob.interstitial.events.LOAD_FAIL', this.interstitialLoadFail.bind(this));
-      document.addEventListener('admob.interstitial.events.LOAD', this.interstitialLoad.bind(this));
-      document.addEventListener('admob.interstitial.events.CLOSE', this.interstitialClose.bind(this));
     },
     oneSignal: function() {
       window.plugins.OneSignal
@@ -298,13 +291,12 @@
       timeoutID = setTimeout(function() { fn.hideDialog('modal-aguarde') }, 1);
       ons.notification.alert("Sua expressão foi cadastrada com sucesso. Ela estará disponível na letra '"+letra+"'.",{title: 'Parabéns!'});
     },
-    getIds: function() {
+    getIds: function() {  
       var userId = window.localStorage.getItem('userId');
       alert('getIds()')
       alert(userId)
       if (!userId) {
         window.plugins.OneSignal.getIds(function(ids) {
-          alert(ids)
           window.localStorage.setItem('userId', ids.userId);
           window.localStorage.setItem('pushToken', ids.pushToken);
         });       
@@ -314,6 +306,8 @@
     cadastraUser: function() {
       var userId = window.localStorage.getItem('userId');
       var pushToken = window.localStorage.getItem('pushToken');
+      alert('cadastraUser()')
+      alert(userId)
       if (userId) {
         $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
