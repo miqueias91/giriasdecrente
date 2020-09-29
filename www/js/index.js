@@ -299,13 +299,13 @@
     getIds: function() {
       var userId = window.localStorage.getItem('userId');
       alert('getIds()')
-      if (!userId) {
+      //if (!userId) {
         window.plugins.OneSignal.getIds(function(ids) {
           window.localStorage.setItem('userId', ids.userId);
           window.localStorage.setItem('pushToken', ids.pushToken);
         });       
         this.cadastraUser();
-      }
+      //}
     },
     cadastraUser: function() {
       var userId = window.localStorage.getItem('userId');
