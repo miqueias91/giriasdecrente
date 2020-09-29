@@ -299,6 +299,7 @@
     getIds: function() {
       var userId = window.localStorage.getItem('userId');
       alert('getIds()')
+      alert(userId)
       //if (!userId) {
         window.plugins.OneSignal.getIds(function(ids) {
           window.localStorage.setItem('userId', ids.userId);
@@ -310,6 +311,7 @@
     cadastraUser: function() {
       var userId = window.localStorage.getItem('userId');
       var pushToken = window.localStorage.getItem('pushToken');
+      alert('cadastraUser()')
       alert(userId)
       if (userId) {
         $.ajax({
@@ -319,6 +321,7 @@
           data: {
             'userId': userId,
             'pushToken': pushToken,
+            'datacadastro': this.dateTime(),
           },
           error: function(a) {
             //alert(a);
