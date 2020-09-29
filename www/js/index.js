@@ -254,33 +254,32 @@
       window.plugins.OneSignal.getIds(function(ids) {
         window.localStorage.setItem('userId', ids.userId);
         window.localStorage.setItem('pushToken', ids.pushToken);
-        $("#OneSignalUserId").val(ids.userId);
-        $("#OneSignalPushToken").val(ids.pushToken);
-        this.cadastraUser();
       });       
+      this.cadastraUser();
     },
     cadastraUser: function() {
       alert('cadastraUser()')
+      var userId = window.localStorage.getItem('userId');
+      var pushToken = window.localStorage.getItem('pushToken');
 
-      var userId = $("#OneSignalUserId").val();
-      var pushToken = $("#OneSignalPushToken").val();
-      alert('userId: '+ userId+'\n'+'pushToken: '+pushToken)
-      
-      $.ajax({
-        url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
-        dataType: 'html',
-        type: 'POST',
-        data: {
-          'userId': userId,
-          'pushToken': pushToken,
-        },
-        error: function(a) {
-          alert(a);
-        },
-        success: function(valorRetornado) {
-          alert(valorRetornado);
-        },
-      });
+      if (userId) {        
+        alert('userId: '+ userId+'\n'+'pushToken: '+pushToken)
+        $.ajax({
+          url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
+          dataType: 'html',
+          type: 'POST',
+          data: {
+            'userId': userId,
+            'pushToken': pushToken,
+          },
+          error: function(a) {
+            alert(a);
+          },
+          success: function(valorRetornado) {
+            alert(valorRetornado);
+          },
+        });
+      }
     },
     dateTime: function() {
       let now = new Date;
