@@ -122,7 +122,7 @@
       }
     },
     buscaGiriaEstado: function(letra) {
-      //admob.interstitial.show();
+      admob.interstitial.show();
       $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/buscaGiria.php",
           dataType: 'json',
@@ -197,7 +197,7 @@
     },
     pesquisaGiriaEstado: function(pesquisa) {
       localStorage.setItem("resultado_girias", '[]');
-      //admob.interstitial.show();
+      admob.interstitial.show();
       $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/buscaGiria.php",
           dataType: 'json',
@@ -225,7 +225,7 @@
       }); 
     },
     ultimasGiriasCadastradas: function() {
-      //admob.interstitial.show();
+      admob.interstitial.show();
       $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/ultimasGiriasCadastradas.php",
           dataType: 'json',
@@ -259,7 +259,7 @@
       }); 
     },
     cadastraGiria: function(giria_input, significado_giria, letra, exemplo){
-      //admob.interstitial.show();
+      admob.interstitial.show();
       var userId = localStorage.getItem('userId');
       var pushToken = localStorage.getItem('pushToken');
       $.ajax({
@@ -325,12 +325,7 @@
             window.localStorage.setItem('userCadastrado', true);
             ons.notification.alert({
               message: 'Conheça as expressões usados pelos evangélicos.\nE caso vc conheça alguma expressão, compartilhe conosco.',
-              title: 'Configuração concluida!',
-              callback: function (index) {
-                if (0 == index) {
-                  this.adMob();
-                }
-              }
+              title: 'Configuração concluida!'
             });          
           },
         });

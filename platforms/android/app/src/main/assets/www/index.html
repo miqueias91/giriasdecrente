@@ -317,7 +317,7 @@
         <script>
           ons.getScriptPage().onInit = function () {
             var dados = this.data.title.split('||'); 
-            //admob.interstitial.show();
+            admob.interstitial.show();
 
             //CHAMA DA FUNÇÃO PARA ABRIR MODAL 
             fn.showDialog('modal-aguarde');
@@ -446,7 +446,7 @@
         <div id='ultimas_girias'></div>
         <script>
           ons.getScriptPage().onInit = function () {
-            //admob.interstitial.show();
+            admob.interstitial.show();
             app.ultimasGiriasCadastradas();
           }
         </script>
@@ -492,7 +492,7 @@
       <script>
         ons.getScriptPage().onInit = function () {
           this.querySelector('ons-toolbar div.center').textContent = this.data.title;
-          //admob.interstitial.show();
+          admob.interstitial.show();
           $( "#cadastrar_giria" ).click(function() {
             if ($( "#giria_input" ).val() === '') {
               ons.notification.alert("Informe o nome da expressão.",{title: 'Ops!'});
@@ -524,7 +524,7 @@
     <!-- JS dependencies (order matters!) -->
     <script type="text/javascript" src="cordova.js"></script>
     <script src="js/jquery-3.4.1.min.js"></script>
-    <script src="js/admob.js"></script>
+    <!--<script src="js/admob.js"></script>-->
     <script src="lib/onsen/js/onsenui.js"></script>
     <script src="lib/SocialSharing/SocialSharing.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-app.js"></script>
@@ -532,7 +532,6 @@
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-database.js"></script>
     <script src="https://www.gstatic.com/firebasejs/7.19.0/firebase-auth.js"></script>
     <script src="js/firebase.js"></script>
-    <script src="js/onesignal.js"></script>
     <script src="js/index.js"></script> 
 </body>
 

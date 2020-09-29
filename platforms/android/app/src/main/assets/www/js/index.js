@@ -1,4 +1,11 @@
   var timeout = 50000;
+  var admobid = {}
+  if (/(android)/i.test(navigator.userAgent)) {  // for android & amazon-fireos
+    admobid = {
+      banner: 'ca-app-pub-7091486462236476/9500431400',
+      interstitial: 'ca-app-pub-7091486462236476/3962547158',
+    }
+  } 
 
   window.fn = {};
 
@@ -38,6 +45,10 @@
     // Application Constructor
     initialize: function() {
       document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+      document.addEventListener('admob.banner.events.LOAD_FAIL', this.bannerLoadFail.bind(this));
+      document.addEventListener('admob.interstitial.events.LOAD_FAIL', this.interstitialLoadFail.bind(this));
+      document.addEventListener('admob.interstitial.events.LOAD', this.interstitialLoad.bind(this));
+      document.addEventListener('admob.interstitial.events.CLOSE', this.interstitialClose.bind(this));
     },
     // deviceready Event Handler    
     // Bind any cordova events here. Common events are:
@@ -47,9 +58,57 @@
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
-      initAd();  
-      showBannerFunc();
-      showInterstitialFunc();
+      var userCadastrado = window.localStorage.getItem('userCadastrado');
+      this.oneSignal();
+      this.getIds();
+
+      if (userCadastrado) {
+        this.adMob();
+      }
+    },
+    bannerLoadFail: function(event) {
+    },
+    interstitialLoadFail: function(event) {
+    },
+    interstitialLoad: function(event) {
+      document.getElementById('showAd').disabled = false;
+    },
+    interstitialClose: function(event) {
+      admob.interstitial.prepare();
+    },
+    adMob: function() {
+      admob.banner.config({
+        id: admobid.banner,
+        isTesting: false,
+        autoShow: true,
+      })
+      admob.banner.prepare();
+
+      admob.interstitial.config({
+        id: admobid.interstitial,
+        isTesting: false,
+        autoShow: false,
+      })
+      admob.interstitial.prepare();
+
+      document.getElementById('showAd').disabled = true;
+      document.getElementById('showAd').onclick = function() {
+        admob.interstitial.show();
+      };
+    },
+    oneSignal: function() {
+      window.plugins.OneSignal
+        .startInit('d1797b39-26de-46b8-86ec-9539f8aabf2d')
+        .handleNotificationOpened(function(jsonData) {
+          var mensagem = JSON.parse(JSON.stringify(jsonData['notification']['payload']['body']));
+
+          ons.notification.alert(
+            mensagem,
+            {title: 'Ola!'}
+          );
+        })
+        .inFocusDisplaying(window.plugins.OneSignal.OSInFocusDisplayOption.Notification)
+        .endInit();
     },
     //FUNÇÃO DE BUSCA
     onSearchKeyDown: function(id) {
@@ -63,7 +122,7 @@
       }
     },
     buscaGiriaEstado: function(letra) {
-      //admob.interstitial.show();
+      admob.interstitial.show();
       $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/buscaGiria.php",
           dataType: 'json',
@@ -138,7 +197,7 @@
     },
     pesquisaGiriaEstado: function(pesquisa) {
       localStorage.setItem("resultado_girias", '[]');
-      //admob.interstitial.show();
+      admob.interstitial.show();
       $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/buscaGiria.php",
           dataType: 'json',
@@ -166,7 +225,7 @@
       }); 
     },
     ultimasGiriasCadastradas: function() {
-      //admob.interstitial.show();
+      admob.interstitial.show();
       $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/ultimasGiriasCadastradas.php",
           dataType: 'json',
@@ -200,7 +259,7 @@
       }); 
     },
     cadastraGiria: function(giria_input, significado_giria, letra, exemplo){
-      //admob.interstitial.show();
+      admob.interstitial.show();
       var userId = localStorage.getItem('userId');
       var pushToken = localStorage.getItem('pushToken');
       $.ajax({
@@ -215,6 +274,7 @@
             'letra': letra,
             'userId': userId,
             'pushToken': pushToken,
+            'dataregistro': this.dateTime(),
           },
           error: function(a) {
             console.log(a)
@@ -236,36 +296,51 @@
       ons.notification.alert("Sua expressão foi cadastrada com sucesso. Ela estará disponível na letra '"+letra+"'.",{title: 'Parabéns!'});
     },
     getIds: function() {
-      window.plugins.OneSignal.getIds(function(ids) {
-        alert('userId: '+ids.userId+'\npushToken: '+ids.pushToken)
-        window.localStorage.setItem('userId', ids.userId);
-        window.localStorage.setItem('pushToken', ids.pushToken);
-
-        $("#OneSignalUserId").val(ids.userId);
-        $("#OneSignalPushToken").val(ids.pushToken);
+      var userCadastrado = window.localStorage.getItem('userCadastrado');
+      if (!userCadastrado) {
+        window.plugins.OneSignal.getIds(function(ids) {
+          window.localStorage.setItem('userId', ids.userId);
+          window.localStorage.setItem('pushToken', ids.pushToken);
+        });       
         this.cadastraUser();
-      });       
+      }
     },
     cadastraUser: function() {
-      var userId = $("#OneSignalUserId").val();
-      var pushToken = $("#OneSignalPushToken").val();
-      alert('userId: '+ userId+'\n'+'pushToken: '+pushToken)
-      
-      $.ajax({
-        url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
-        dataType: 'html',
-        type: 'POST',
-        data: {
-          'userId': userId,
-          'pushToken': pushToken,
-        },
-        error: function(a) {
-          alert(a);
-        },
-        success: function(valorRetornado) {
-          alert(valorRetornado);
-        },
-      });
+      var userId = window.localStorage.getItem('userId');
+      var pushToken = window.localStorage.getItem('pushToken');
+      if (userId) {
+        $.ajax({
+          url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
+          dataType: 'html',
+          type: 'POST',
+          data: {
+            'userId': userId,
+            'pushToken': pushToken,
+            'datacadastro': this.dateTime(),
+          },
+          error: function(a) {
+            //alert(a);
+          },
+          success: function(valorRetornado) {
+            window.localStorage.setItem('userCadastrado', true);
+            ons.notification.alert({
+              message: 'Conheça as expressões usados pelos evangélicos.\nE caso vc conheça alguma expressão, compartilhe conosco.',
+              title: 'Configuração concluida!'
+            });          
+          },
+        });
+      }
+      else{
+        ons.notification.alert({
+          message: 'Obrigado por baixar nosso dicionário, abra o aplicativo novamente para podermos concluir as configurações.',
+          title: 'Mensagem',
+          callback: function (index) {
+            if (0 == index) {
+              navigator.app.exitApp();
+            }
+          }
+        });
+      }
     },
     dateTime: function() {
       let now = new Date;
@@ -281,4 +356,3 @@
     }
   };
   app.initialize();
-  app.getIds();
