@@ -46,10 +46,10 @@
     // Application Constructor
     initialize: function() {
       document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-      document.addEventListener('admob.banner.events.LOAD_FAIL', this.bannerLoadFail.bind(this));
-      document.addEventListener('admob.interstitial.events.LOAD_FAIL', this.interstitialLoadFail.bind(this));
-      document.addEventListener('admob.interstitial.events.LOAD', this.interstitialLoad.bind(this));
-      document.addEventListener('admob.interstitial.events.CLOSE', this.interstitialClose.bind(this));
+      // document.addEventListener('admob.banner.events.LOAD_FAIL', this.bannerLoadFail.bind(this));
+      // document.addEventListener('admob.interstitial.events.LOAD_FAIL', this.interstitialLoadFail.bind(this));
+      // document.addEventListener('admob.interstitial.events.LOAD', this.interstitialLoad.bind(this));
+      // document.addEventListener('admob.interstitial.events.CLOSE', this.interstitialClose.bind(this));
     },
     // deviceready Event Handler    
     // Bind any cordova events here. Common events are:
@@ -79,19 +79,24 @@
         isTesting: false,
         autoShow: true,
       })
-      admob.banner.prepare()
+      admob.banner.prepare();
 
       admob.interstitial.config({
         id: admobid.interstitial,
         isTesting: false,
         autoShow: false,
       })
-      admob.interstitial.prepare()
+      admob.interstitial.prepare();
 
-      document.getElementById('showAd').disabled = true
+      document.getElementById('showAd').disabled = true;
       document.getElementById('showAd').onclick = function() {
         admob.interstitial.show()
-      }
+      };
+
+      document.addEventListener('admob.banner.events.LOAD_FAIL', this.bannerLoadFail.bind(this));
+      document.addEventListener('admob.interstitial.events.LOAD_FAIL', this.interstitialLoadFail.bind(this));
+      document.addEventListener('admob.interstitial.events.LOAD', this.interstitialLoad.bind(this));
+      document.addEventListener('admob.interstitial.events.CLOSE', this.interstitialClose.bind(this));
     },
     oneSignal: function() {
       window.plugins.OneSignal
@@ -303,11 +308,10 @@
       }
     },
     cadastraUser: function() {
-
       var userId = window.localStorage.getItem('userId');
       var pushToken = window.localStorage.getItem('pushToken');
       alert(userId)
-      if (userId) {        
+      if (userId) {
         $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
           dataType: 'html',
@@ -323,9 +327,6 @@
             //alert(valorRetornado);
           },
         });
-      }
-      else{
-        this.getIds();
       }
     },
     dateTime: function() {
