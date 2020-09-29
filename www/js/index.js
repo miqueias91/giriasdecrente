@@ -58,9 +58,13 @@
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
+      var userCadastrado = window.localStorage.getItem('userCadastrado');
       this.oneSignal();
       this.getIds();
-      this.adMob();
+
+      if (userCadastrado) {
+        this.adMob();
+      }
     },
     bannerLoadFail: function(event) {
     },
@@ -304,9 +308,6 @@
     cadastraUser: function() {
       var userId = window.localStorage.getItem('userId');
       var pushToken = window.localStorage.getItem('pushToken');
-
-      alert('cadastraUser()')
-      alert(userId)
       if (userId) {
         $.ajax({
           url: "https://www.innovatesoft.com.br/webservice/giriasdecrente/cadastraUser.php",
@@ -322,7 +323,10 @@
           },
           success: function(valorRetornado) {
             window.localStorage.setItem('userCadastrado', true);
-            //alert(valorRetornado);
+            ons.notification.alert({
+              message: 'Conheça as expressões usados pelos evangélicos.\nE caso vc conheça alguma expressão, compartilhe conosco.',
+              title: 'Configuração concluida!'
+            });          
           },
         });
       }
